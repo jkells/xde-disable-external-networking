@@ -7,14 +7,14 @@ Whenever you start the emulator it enumerates all network adapters and creates H
 
 My problem is that I’m on a WIFI network that will not support bridged connections. DHCP packets are dropped and traffic will only flow to one machine at a time. Ideally I just want to run the emulator on a simple Hyper-V internal network and if it needs internet access I will use NAT.
 
-If your having problem starting the emulator or networking isn't working as expected, this script will disable the configuration of external switches and the removal of custom network adapters from the virtual machines created by the emulator. It uses Mono.Cecil to modify the XDE executable and one of it's DLLS.
+What
+====
 
-* Backups are made next to the modified files with an extension .backup
-
-* As it runs against files in Program Files you will need to run as administrator.
-
-* If you need the emulator to access the network you will need to add an adapter manually to the virtual machine in Hyper-V
+This script modifies XDE so it doesn't create external switches OR delete invalid network adapters from the underlying Hyper-V VMs. It uses Mono.Cecil to modify the XDE executable and one of it's DLLS. That means you can configure external networks for the emulators yourself in Hyper-V however you want.
 
 Tips
 ====
-If you're running Xamarin apps in this emulator and they crash on startup then enable compatibility mode on the virtual CPU in Hyper-V
+* Backups are made next to the modified files with an extension .backup
+* As it runs against files in Program Files you will need to run as administrator.
+* If you need the emulator to access the network you will need to add an adapter manually to the virtual machine in Hyper-V
+* If you're running Xamarin apps in this emulator and they crash on startup then enable compatibility mode on the virtual CPU in Hyper-V
